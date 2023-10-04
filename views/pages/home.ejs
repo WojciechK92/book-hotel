@@ -1,1 +1,17 @@
-<h1>Home page</h1>
+<article class="my-4">
+  <section>
+    <div class="container container-home">
+      <h3 class="mt-5 mb-4">Summer 2023</h3>
+      <div class="d-flex gap-1 flex-wrap justify-content-center">
+        <% section1.forEach(country => { %>
+          <div class="photo">
+            <a href="#">
+              <img src="/img/<%=country%>.jpg" alt="<%=country%>" class="thumbnail-image">
+              <span class="thumbnail-label"><%=country%></span>
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+</article>

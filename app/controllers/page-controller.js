@@ -1,6 +1,11 @@
 class PageController {
   showHomePage(req, res) {
-    res.render('pages/home');
+    const section1 = ['Usa', 'France', 'Zanzibar', 'Italy', 'United Kingdom', 'Spain'];
+
+    res.render('pages/home', {
+      title: 'Home page',
+      section1,
+    });
   };
 
   showNotFound(req, res) {
