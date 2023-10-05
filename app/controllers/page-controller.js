@@ -1,10 +1,12 @@
 class PageController {
   showHomePage(req, res) {
-    const section1 = ['Usa', 'France', 'Zanzibar', 'Italy', 'United Kingdom', 'Spain'];
+    const summer = ['USA', 'France', 'Greece', 'Italy', 'UK', 'Spain'];
+    const poland = ['Cracow', 'Gdansk', 'Warsaw', 'Wroclaw', 'Bieszczady', 'Bialystok'];
 
     res.render('pages/home', {
       title: 'Home page',
-      section1,
+      summer,
+      poland,
     });
   };
 
