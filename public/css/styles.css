@@ -5,8 +5,13 @@ body {
   background: linear-gradient(338deg, rgba(112,250,200,1) 0%, rgba(25,165,255,1) 100%);
   min-height: 200px;
 }
+.header-zeyada {
+  font-family: 'Zeyada', cursive;
+  font-size: 48px;
+  font-weight: 700;
+}
 .footer {
-  background: linear-gradient(338deg, rgba(112,250,200,1) 0%, rgba(25,165,255,1) 100%);
+  color: rgba(25,165,255,1);
   padding-block: 20px;
   letter-spacing: 1px;
 }
