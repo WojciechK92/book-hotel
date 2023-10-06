@@ -9,11 +9,12 @@ const __dirname = path.resolve();
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
-
 app.use(ejsLayouts);
 app.set('layout', 'layouts/main');
 
 app.use(express.static('public'));
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use(viewVariablesMiddleware);
 

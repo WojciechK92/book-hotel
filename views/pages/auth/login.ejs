@@ -1,0 +1,33 @@
+<form method="post">
+  <div class="container my-4">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="mb-4">Login</h2>
+        <% if (errors) { %>
+          <div class="alert alert-danger">Wrong email or password!</div>
+        <% } %>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input 
+            value="<%=form.email%>"
+            id="email"
+            name="email"
+            type="email" 
+            required
+            class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input 
+            id="password"
+            name="password"
+            type="password" 
+            required
+            class="form-control">
+        </div>
+        <button class="btn btn-primary px-4 py-2 mt-3 mb-2">Log in</button>
+      </div>
+    </div>
+  </div>
+</form>
+

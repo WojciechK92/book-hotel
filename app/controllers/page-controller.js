@@ -12,7 +12,7 @@ class PageController {
 
   showNotFound(req, res) {
     res.render('errors/notFound', {
-      layout: 'layouts/simple'
+      layout: 'layouts/auth'
     });
   };
 };
