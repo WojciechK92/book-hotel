@@ -1,0 +1,4 @@
+
+.icon-flight:before { content: '\e800'; } /* '' */
+.icon-food:before { content: '\f0f5'; } /* '' */
+.icon-calendar-empty:before { content: '\f133'; } /* '' */

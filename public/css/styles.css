@@ -71,6 +71,10 @@ body {
   border-radius: 5px;
   padding: 5px 50px;
 }
+.filtration {
+  width: 300px;
+}
+
 
 @media (max-width: 991px) {
   .navbar {
@@ -85,5 +89,11 @@ body {
   }
   .container-galery {
   padding: 30px 0px;
+  }
+  .filtration {
+    width: 100%;
+  }
+  .letter-spacing {
+    letter-spacing: 1px;
   }
 }
