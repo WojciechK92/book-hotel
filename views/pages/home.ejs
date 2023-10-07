@@ -1,85 +1,93 @@
-<article class="my-4">
-  <section>
-    <div class="container container-galery">
-      <h3 class="mb-4">Winter 2023</h3>
-      <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <a href="#" class="carousel-item active">
-            <img src="/img/Maledives.jpg" class="d-block w-100" alt="Maledives">
-            <div class="carousel-caption d-flex justify-content-center">
-              <div class="shadow-box">
-                <h3 class="m-0">Maledives</h3>
-                <p class="d-none d-md-inline">Spend winter in paradise!</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="carousel-item">
-            <img src="/img/Indonesia.jpg" class="d-block w-100" alt="Indonesia">
-            <div class="carousel-caption d-flex justify-content-center">
-              <div class="shadow-box">
-                <h3 class="m-0">Indonesia</h3>
-                <p class="d-none d-md-inline">Explore foreign continents!</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="carousel-item">
-            <img src="/img/Zanzibar.jpg" class="d-block w-100" alt="Zanzibar">
-            <v class="carousel-caption d-flex justify-content-center">
-              <div class="shadow-box">
-                <h3 class="m-0">Zanzibar</h3>
-                <p class="d-none d-md-inline">One time is not enough!</p>
-              </div>
-            </v>
-          </a>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="container container-galery">
-      <h3 class="mb-4">Summer 2024</h3>
-      <div class="row justify-content-center">
-        <% summer.forEach(country => { %>
-          <div class="col-6 col-md-4 px-0">
-            <div class="photo">
-              <a href="#">
-                <img src="/img/<%=country%>.jpg" alt="<%=country%>" class="thumbnail-image">
-                <span class="thumbnail-label"><%=country%></span>
-              </a>
-            </div>
+<main>
+  <article class="my-4">
+    <section>
+      <div class="container container-galery">
+        <header>
+          <h2 class="mb-4 letter-spacing">Winter 2023</h2>
+        </header>
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
-        <% }) %>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="container container-galery">
-      <h3 class="mb-4">Poland 2024</h3>
-      <div class="row justify-content-center">
-        <% poland.forEach(country => { %>
-          <div class="col-6 col-md-4 px-0">
-            <div class="photo">
-              <a href="#">
-                <img src="/img/<%=country%>.jpg" alt="<%=country%>" class="thumbnail-image">
-                <span class="thumbnail-label"><%=country%></span>
-              </a>
-            </div>
+          <div class="carousel-inner">
+            <a href="#" class="carousel-item active">
+              <img src="/img/Maledives.jpg" class="d-block w-100" alt="Maledives">
+              <div class="carousel-caption d-flex justify-content-center">
+                <div class="shadow-box">
+                  <h3 class="m-0">Maledives</h3>
+                  <p class="d-none d-md-inline">Spend winter in paradise!</p>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="carousel-item">
+              <img src="/img/Indonesia.jpg" class="d-block w-100" alt="Indonesia">
+              <div class="carousel-caption d-flex justify-content-center">
+                <div class="shadow-box">
+                  <h3 class="m-0">Indonesia</h3>
+                  <p class="d-none d-md-inline">Explore foreign continents!</p>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="carousel-item">
+              <img src="/img/Zanzibar.jpg" class="d-block w-100" alt="Zanzibar">
+              <v class="carousel-caption d-flex justify-content-center">
+                <div class="shadow-box">
+                  <h3 class="m-0">Zanzibar</h3>
+                  <p class="d-none d-md-inline">One time is not enough!</p>
+                </div>
+              </v>
+            </a>
           </div>
-        <% }) %>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
-</article>
+    </section>
+    <section>
+      <div class="container container-galery">
+        <header>
+          <h2 class="mb-4 letter-spacing">Summer 2024</h2>
+        </header>
+        <div class="row justify-content-center">
+          <% summer.forEach(country => { %>
+            <div class="col-6 col-md-4 px-0">
+              <div class="photo">
+                <a href="#">
+                  <img src="/img/<%=country%>.jpg" alt="<%=country%>" class="thumbnail-image">
+                  <span class="thumbnail-label"><%=country%></span>
+                </a>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container container-galery">
+        <header>
+          <h2 class="mb-4 letter-spacing">Poland 2024</h2>
+        </header>
+        <div class="row justify-content-center">
+          <% poland.forEach(country => { %>
+            <div class="col-6 col-md-4 px-0">
+              <div class="photo">
+                <a href="#">
+                  <img src="/img/<%=country%>.jpg" alt="<%=country%>" class="thumbnail-image">
+                  <span class="thumbnail-label"><%=country%></span>
+                </a>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>

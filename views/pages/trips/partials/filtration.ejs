@@ -1,0 +1,135 @@
+<div class="card card-body">
+  <h4 class="letter-spacing mb-3 text-center">Filtration</h4>
+  <div class="mb-3">
+    <h5>Sort by</h5>
+    <select name="sort" class="form-control">
+      <option value="date">Date</option>
+      <option value="price">Price</option>
+      <option value="rating">Rating</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <h5>Food</h5>
+    <% food.forEach(f => { %>
+      <div class="form-check">
+        <input 
+          id="<%= f.value %>"
+          value="<%= f.value %>"
+          type="checkbox" 
+          name="food"
+          class="form-check-input"
+          <% if (f.checked) { %>
+            checked 
+          <% } %>
+          >
+        <label for="all-inclusive" class="form-check-label"><%= f.label %></label>
+      </div>
+    <% }) %>
+  </div>
+  <div class="mb-3">
+    <h5>Hotel standard</h5>
+      <div class="form-check">
+        <input
+          value=""
+          id="hotel-standard-any"
+          name="hotel-standard"
+          type="radio"   
+          class="form-check-input"
+          checked
+        >
+        <label for="hotel-standard-any" class="form-check-label">Any</label>
+      </div>
+    <% for (let i = 5; i >= 2; i-- ) { %>
+      <div class="form-check">
+        <input
+          value="<%= i %>"
+          id="hotel-standard-<%= i %>"
+          name="hotel-standard"
+          type="radio"   
+          class="form-check-input"
+        >
+        <label for="hotel-standard-<%= i %>" class="form-check-label"><%= i %>*</label>
+      </div>
+    <% } %>
+  </div>
+  <div class="mb-3">
+    <h5>Price per person</h5>
+    <div class="row">
+      <div class="col-12 mb-2 col-sm-6">
+        <div class="input-group">
+          <input type="number" class="form-control" name="price-low" placeholder="From" min="0">
+          <span class="input-group-text">€</span>
+        </div>
+      </div>
+      <div class="col-12 mb-2 col-sm-6">
+        <div class="input-group">
+          <input type="number" class="form-control" name="price-high" placeholder="To" min="0">
+          <span class="input-group-text">€</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <h5>Length of stay</h5>
+    <select name="length-of-stay" class="form-control">
+      <option value="">Any</option>
+      <option value="1-6">1-6 days</option>
+      <option value="7-10">7-10 days</option>
+      <option value="11-15">11-15 days</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <h5>Type of transport</h5>
+    <select name="type-of-transport" class="form-control">
+      <option value="">Any</option>
+      <option value="plane">Plane</option>
+      <option value="bus">Bus</option>
+      <option value="own">Own</option>
+    </select> 
+  </div>
+  <div class="mb-3">
+    <h5>Hotel rating</h5>
+      <div class="form-check">
+        <input
+          value=""
+          id="hotel-rating-any"
+          name="hotel-rating"
+          type="radio"   
+          class="form-check-input"
+          checked
+        >
+        <label for="hotel-rating-any" class="form-check-label">Any</label>
+      </div>
+    <% for (let i = 9; i >= 6; i-- ) { %>
+      <div class="form-check">
+        <input
+          value="<%= i %>"
+          id="hotel-rating-<%= i %>"
+          name="hotel-rating"
+          type="radio"   
+          class="form-check-input"
+        >
+        <label for="hotel-rating-<%= i %>" class="form-check-label"><%= i %>.0+</label>
+      </div>
+    <% } %>
+  </div>
+  <div class="mb-3">
+    <h5>Popular</h5>
+    <% popular.forEach(p => { %>
+      <div class="form-check">
+        <input 
+          value="<%= p.value %>"
+          id="<%= p.value %>"
+          type="checkbox"
+          name="popular"
+          class="form-check-input"
+          <% if (p.checked) { %>
+            checked
+          <% } %>
+          >
+        <label for="<%= p.value %>" class="form-check-label"><%= p.label %></label>
+      </div>
+    <% }) %>
+  </div>
+  <button class="btn btn-primary w-100 mt-3">Search offer</button>
+</div>
