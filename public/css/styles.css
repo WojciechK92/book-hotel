@@ -5,8 +5,13 @@ body {
   background: linear-gradient(338deg, rgba(112,250,200,1) 0%, rgba(25,165,255,1) 100%);
   min-height: 200px;
 }
+.header-zeyada {
+  font-family: 'Zeyada', cursive;
+  font-size: 48px;
+  font-weight: 700;
+}
 .footer {
-  background: linear-gradient(338deg, rgba(112,250,200,1) 0%, rgba(25,165,255,1) 100%);
+  color: rgba(25,165,255,1);
   padding-block: 20px;
   letter-spacing: 1px;
 }
@@ -70,6 +75,12 @@ body {
   background-color: rgb(0, 0, 0, 0.4);
   border-radius: 5px;
   padding: 5px 50px;
+}
+.form-group i {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
 }
 
 @media (max-width: 991px) {
