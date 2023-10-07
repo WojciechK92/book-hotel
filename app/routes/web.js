@@ -7,6 +7,8 @@ const router = new express.Router();
 router.get('/', PageController.showHomePage);
 router.get('/login', AuthController.showLoginForm);
 router.post('/login', AuthController.login);
+router.get('/register', AuthController.showRegisterForm);
+router.post('/register', AuthController.register);
 router.get('*', PageController.showNotFound);
 
 export default router;

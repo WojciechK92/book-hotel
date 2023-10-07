@@ -4,6 +4,8 @@ import ejsLayouts from 'express-ejs-layouts';
 import router from './routes/web.js';
 import viewVariablesMiddleware from './middleware/view-variables-middleware.js';
 
+import './db/mongoose.js';
+
 const app = express();
 const __dirname = path.resolve();
 
