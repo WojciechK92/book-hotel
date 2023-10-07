@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { validateEmail, validatePassword } from '../validators.js';
+import bcrypt from 'bcrypt';
 
 const userSchema = new Schema({
   email: {
@@ -17,6 +18,14 @@ const userSchema = new Schema({
   },
 });
 
+userSchema.pre('save', async function(next) {
+  const salt = bcrypt.genSaltSync(10); 
+  const hash = bcrypt.hashSync(this.password, salt);
+  this.password = hash;
+
+  next();
+});
+
 userSchema.post('save', function(err, data, next) {
   if (err.code === 11000) {
     err.errors = { email: { message: 'This email is already taken!' } };
@@ -24,6 +33,12 @@ userSchema.post('save', function(err, data, next) {
 
   next();
 });
+
+userSchema.methods = {
+  comparePassword(password) {
+    return bcrypt.compareSync(password, this.password); 
+  },
+};
 
 const User = mongoose.model('User', userSchema); 
 
