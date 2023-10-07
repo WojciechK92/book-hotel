@@ -1,14 +1,15 @@
 import express from 'express';
 import PageController from '../controllers/page-controller.js';
-import AuthController from '../controllers/auth-controller.js';
+import UserController from '../controllers/user-controller.js';
 
 const router = new express.Router();
 
 router.get('/', PageController.showHomePage);
-router.get('/login', AuthController.showLoginForm);
-router.post('/login', AuthController.login);
-router.get('/register', AuthController.showRegisterForm);
-router.post('/register', AuthController.register);
+router.get('/login', UserController.showLoginForm);
+router.post('/login', UserController.login);
+router.get('/logout', UserController.logout);
+router.get('/register', UserController.showRegisterForm);
+router.post('/register', UserController.register);
 router.get('*', PageController.showNotFound);
 
 export default router;
