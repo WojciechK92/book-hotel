@@ -1,0 +1,16 @@
+<div class="mb-3">
+  <h6><%= label %></h6>
+  <% options.forEach(option => { %>
+    <div class="form-check">
+      <label for="<%= option.value %>" class="form-check-label"><%= option.label %></label>
+      <input 
+        name="<%= name %>"
+        id="<%= option.value %>"
+        value="<%= option.value %>"
+        type="radio" 
+        class="form-check-input"
+        checked
+      >
+    </div>
+  <% }) %>
+</div>

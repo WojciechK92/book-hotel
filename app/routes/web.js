@@ -3,6 +3,8 @@ import PageController from '../controllers/page-controller.js';
 import TripController from '../controllers/trip-controller.js';
 import UserController from '../controllers/user-controller.js';
 import AdminController from '../controllers/admin-controller.js';
+import upload from '../services/uploader.js';
+import errorHandlerMiddleware from '../middleware/error-handler-middleware.js';
 
 const router = new express.Router();
 
@@ -16,6 +18,7 @@ router.post('/register', UserController.register);
 
 router.get('/admin', AdminController.showAdminPanel);
 router.get('/admin/add', AdminController.showAddTripForm);
+router.post('/admin/add', upload.single('image'), errorHandlerMiddleware, AdminController.addTrip);
 
 router.get('/admin/login', AdminController.showLoginForm);
 router.post('/admin/login', AdminController.login);
