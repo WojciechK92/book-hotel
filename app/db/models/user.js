@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import { validateEmail, validatePassword } from '../validators.js';
 import bcrypt from 'bcrypt';
 
-const userSchema = new Schema({
+export const userSchema = new Schema({
   email: {
     type: String,
     required: [true, 'This field is required!'],
