@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import config from './config.js';
 import userMiddleware from './middleware/user-middleware.js';
+import { isAdminAuthenticated } from './middleware/is-auth-middleware.js'
 
 import './db/mongoose.js';
 
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(viewVariablesMiddleware);
 app.use(userMiddleware);
+app.use('/admin', isAdminAuthenticated);
 
 app.use(router);
 
