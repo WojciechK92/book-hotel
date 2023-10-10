@@ -9,7 +9,8 @@
         value="<%= option.value %>"
         type="radio" 
         class="form-check-input"
-        checked
+        <%- form[name] === option.value ? 'checked' : '' %>
+        <%- !form[name] ? 'checked' : '' %>
       >
     </div>
   <% }) %>

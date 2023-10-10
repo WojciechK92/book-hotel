@@ -3,7 +3,8 @@ import { validateLetters, validateDate } from '../validators.js';
 
 const validateLettersExpression = [validateLetters, 'Only alphabet characters and numbers (0-10) are available!'];
 const requiredExpression = [true, 'This field is required!'];
-const minLengthExpression = [3, 'Minimum amount of characters: 3!'];
+const minLengthExpression = [3, 'Minimum amount of characters: 3'];
+const maxLengthExpression = [30, 'Maximum amount of characters: 30'];
 
 const tripSchema = new Schema({
   country: {
@@ -12,6 +13,7 @@ const tripSchema = new Schema({
     lowercase: true,
     trim: true,
     minLength: minLengthExpression,
+    maxLength: maxLengthExpression,
     validate: validateLettersExpression, 
   },
   region: {
@@ -20,6 +22,7 @@ const tripSchema = new Schema({
     lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
+    maxLength: maxLengthExpression,
     validate: validateLettersExpression,
 
   },
@@ -29,6 +32,7 @@ const tripSchema = new Schema({
     lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
+    maxLength: maxLengthExpression,
     validate: validateLettersExpression,
   },
   hotelName: {
@@ -37,6 +41,7 @@ const tripSchema = new Schema({
     lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
+    maxLength: maxLengthExpression,
     validate: validateLettersExpression,
   },
   hotelStandard: {
@@ -60,13 +65,12 @@ const tripSchema = new Schema({
     lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
+    maxLength: maxLengthExpression,
     validate: validateLettersExpression,
   },
   food: {
     type: String,
     required: requiredExpression, 
-    lowercase: true,
-    trim: true,
     validate: validateLettersExpression,
   },
   transport: {
@@ -75,6 +79,7 @@ const tripSchema = new Schema({
     lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
+    maxLength: maxLengthExpression,
     validate: validateLettersExpression,
   },
   popular: {
@@ -83,6 +88,7 @@ const tripSchema = new Schema({
     lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
+    maxLength: maxLengthExpression,
     validate: validateLettersExpression,
   },
   places: {
