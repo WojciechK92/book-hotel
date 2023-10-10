@@ -17,8 +17,11 @@ router.get('/register', UserController.showRegisterForm);
 router.post('/register', UserController.register);
 
 router.get('/admin', AdminController.showAdminPanel);
-router.get('/admin/add', AdminController.showAddTripForm);
-router.post('/admin/add', upload.single('image'), errorHandlerMiddleware, AdminController.addTrip);
+router.get('/admin/add-trip', AdminController.showAddTripForm);
+router.post('/admin/add-trip', upload.single('image'), errorHandlerMiddleware, AdminController.addTrip);
+router.get('/admin/edit-trip/:id', AdminController.showEditTripForm);
+router.post('/admin/edit-trip/:id', upload.single('image'), errorHandlerMiddleware, AdminController.editTrip);
+router.get('/admin/delete-trip/:id', AdminController.deleteTrip);
 
 router.get('/admin/login', AdminController.showLoginForm);
 router.post('/admin/login', AdminController.login);

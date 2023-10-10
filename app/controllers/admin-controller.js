@@ -32,10 +32,13 @@ class AdminController {
     };
   };
 
-  showAdminPanel(req, res) {
+  async showAdminPanel(req, res) {
+    const trips = await Trip.find({});
+
     res.render('pages/admin/trips', {
       layout: 'layouts/auth',
       title: 'Admin panel',
+      trips,
     });
   };
 
@@ -78,6 +81,76 @@ class AdminController {
         errors: e.errors, 
       });
     };
+  };
+
+  async showEditTripForm(req, res) {
+    const { id } = req.params;    
+    
+    try {
+      const trip = await Trip.findById(id);
+
+      res.render('pages/admin/editTrip', {
+        layout: 'layouts/auth',
+        title: 'Admin panel',
+        form: trip,
+      });
+    } catch(e) {
+      res.render('pages/admin/editTrip', {
+        layout: 'layouts/auth',
+        title: 'Admin panel',
+      });
+    };
+
+  };
+
+  async editTrip(req, res) {
+
+    const { id } = req.params;
+    const trip = await Trip.findById(id);
+
+    trip.country = req.body.country;
+    trip.region = req.body.region;
+    trip.city = req.body.city;
+    trip.hotelName = req.body.hotelName;
+    trip.hotelStandard = req.body.hotelStandard;
+    trip.start = req.body.start;
+    trip.end = req.body.end;
+    trip.from = req.body.from;
+    trip.food = req.body.food;
+    trip.transport = req.body.transport;
+    trip.popular = req.body.popular;
+    trip.places = req.body.places;
+    trip.price = req.body.price;
+    trip.admin = req.session.admin._id;
+
+    if (req.file) {
+      trip.image = req.file.filename;
+    }; 
+    
+    try {
+      await trip.save();
+      res.redirect('/admin');
+
+    } catch(e) {
+      res.render('pages/admin/addTrip', {
+        layout: 'layouts/auth',
+        form: req.body,
+        title: 'Add trip',
+        errors: e.errors, 
+      });
+    };
+  };
+
+  async deleteTrip(req, res) {
+    const { id } = req.params;
+
+    try {
+      await Trip.deleteOne({ _id: id });
+      res.redirect('/admin');
+    } catch(e) {
+      console.log(e.erros);
+    };
+
   };
 };
 
