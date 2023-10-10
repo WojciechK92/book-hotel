@@ -23,8 +23,9 @@ router.get('/admin/edit-trip/:id', AdminController.showEditTripForm);
 router.post('/admin/edit-trip/:id', upload.single('image'), errorHandlerMiddleware, AdminController.editTrip);
 router.get('/admin/delete-trip/:id', AdminController.deleteTrip);
 
-router.get('/admin/login', AdminController.showLoginForm);
-router.post('/admin/login', AdminController.login);
+router.get('/admin/logout', AdminController.logout);
+router.get('/login/admin', AdminController.showLoginForm);
+router.post('/login/admin', AdminController.login);
 
 router.get('*', PageController.showNotFound);
 

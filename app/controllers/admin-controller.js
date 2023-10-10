@@ -1,8 +1,13 @@
 import Admin from '../db/models/admin.js';
 import Trip from '../db/models/trip.js';
+import fs from 'fs';
 
 class AdminController {
   showLoginForm(req, res) {
+    if (req.session.admin) {
+      return res.redirect('/admin');
+    };
+
     res.render('pages/auth/login', {
       layout: 'layouts/auth',
       title: 'Login as admin',
@@ -32,14 +37,26 @@ class AdminController {
     };
   };
 
-  async showAdminPanel(req, res) {
-    const trips = await Trip.find({});
+  logout(req, res) {
+    req.session.destroy();
+    res.redirect('/');
+  };
 
-    res.render('pages/admin/trips', {
-      layout: 'layouts/auth',
-      title: 'Admin panel',
-      trips,
-    });
+  async showAdminPanel(req, res) {
+    let query = Trip.find({});
+    query = query.sort({ country: 'asc', region: 'asc', city: 'asc' });
+
+    try {
+      const trips = await query.exec();
+
+      res.render('pages/admin/trips', {
+        layout: 'layouts/auth',
+        title: 'Admin panel',
+        trips,
+      });
+    } catch(e) {
+      console.log(e.errors);
+    };
   };
 
   showAddTripForm(req, res) {
@@ -95,10 +112,7 @@ class AdminController {
         form: trip,
       });
     } catch(e) {
-      res.render('pages/admin/editTrip', {
-        layout: 'layouts/auth',
-        title: 'Admin panel',
-      });
+      res.send(e.message);
     };
 
   };
@@ -123,9 +137,12 @@ class AdminController {
     trip.price = req.body.price;
     trip.admin = req.session.admin._id;
 
+
     if (req.file) {
+      fs.unlinkSync(`public/uploads/${trip.image}`);
       trip.image = req.file.filename;
     }; 
+
     
     try {
       await trip.save();
@@ -145,12 +162,14 @@ class AdminController {
     const { id } = req.params;
 
     try {
+      const trip = await Trip.findById(id);
+      fs.unlinkSync(`public/uploads/${trip.image}`);
+
       await Trip.deleteOne({ _id: id });
       res.redirect('/admin');
     } catch(e) {
-      console.log(e.erros);
+      res.send(e.message);
     };
-
   };
 };
 
