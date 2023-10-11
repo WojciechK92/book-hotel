@@ -9,7 +9,9 @@ import errorHandlerMiddleware from '../middleware/error-handler-middleware.js';
 const router = new express.Router();
 
 router.get('/', PageController.showHomePage);
-router.get('/all-inclusive', TripController.showAllInclusive);
+router.get('/trips', TripController.showPageWithTrips);
+router.get('/all-inclusive', TripController.showPageWithTrips);
+router.get('/last-minute', TripController.showPageWithTrips);
 router.get('/login', UserController.showLoginForm);
 router.post('/login', UserController.login);
 router.get('/logout', UserController.logout);

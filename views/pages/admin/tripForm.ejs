@@ -24,26 +24,26 @@
         <%- include('../../partials/inputSelect', { label: 'Food', name: 'food',
           options: [
             { label: '--- choose one option ---', value: ''},  
-            { label: 'All inclusive', value: 'all-inclusive'},  
-            { label: 'Breakfast and dinner', value: 'HB'},  
-            { label: 'Breakfast', value: 'BB'},  
-            { label: 'Three meals', value: 'FB'},  
+            { label: 'All inclusive', value: 'All-inclusive'},  
+            { label: 'Breakfast and dinner', value: 'Breakfast-and-diner'},  
+            { label: 'Breakfast', value: 'Breakfast'},  
+            { label: 'Three meals', value: 'Three-meals'},  
           ],
         }) %>
         <%- include('../../partials/inputRadio', { label: 'Mean of transport', name: 'transport',
           options: [
-            { label: 'Plane', value: 'plane'},  
-            { label: 'Bus', value: 'bus'},  
-            { label: 'Own', value: 'own'},  
+            { label: 'Plane', value: 'Plane'},  
+            { label: 'Bus', value: 'Bus'},  
+            { label: 'Own', value: 'Own'},  
           ],
         }) %>
         <%- include('../../partials/inputSelect', { label: 'Popular', name: 'popular',
           options: [
             { label: '--- choose one option ---', value: ''},  
-            { label: 'Last minute', value: 'last-minute'},  
-            { label: 'Winter 2023', value: 'winter2023'},  
-            { label: 'Summer 2024', value: 'summer2024'},  
-            { label: 'Poland 2024', value: 'poland2024'},  
+            { label: 'Last minute', value: 'Last-minute'},  
+            { label: 'Winter 2023', value: 'Winter2023'},  
+            { label: 'Summer 2024', value: 'Summer2024'},  
+            { label: 'Poland 2024', value: 'Poland2024'},  
           ],
         }) %>
         <%- include('../../partials/inputNumber', { label: 'Free places', name: 'places', required: true, min: 0}) %>

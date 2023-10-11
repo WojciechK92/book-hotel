@@ -1,7 +1,13 @@
 <article>
   <div class="container-fluid container-lg my-4">
   <Header>
-    <h2 class="letter-spacing">All inclusive</h2>
+    <% if (url.includes('/all-inclusive')) { %>
+      <h2 class="letter-spacing">All-inclusive</h2>
+    <% } else if (url.includes('/last-minute')) { %>
+      <h2 class="letter-spacing">Last minute</h2>
+    <% } else if (url.includes('/trips')) { %>
+      <h2 class="letter-spacing">Trips</h2>
+    <% } %> 
   </Header>
     <div class="my-4">
       <h5>Selected filters: </h5>

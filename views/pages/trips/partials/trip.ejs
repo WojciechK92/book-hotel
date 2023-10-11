@@ -1,13 +1,13 @@
 <div class="card card-body mb-3 bg-light">
   <div class="row">
     <div class="col-12 mb-3 col-md-4 mb-md-0 d-flex align-items-center justify-content-center mb-3">
-      <img src="/img/Spain.jpg" alt="Spain" class="img-thumbnail">
+      <img src="/uploads/<%= trip.image %>" alt="Spain" class="img-thumbnail">
     </div>
     <div class="col-12 mb-3 col-md-5 mb-md-0 border-end">
-      <p class="text-muted">Egipt/Marsa/El AlamAlbatros</p>
-      <h5 class="my-0">Albatros Sands</h5>
+      <p class="text-muted"><%= trip.country %>/<%= trip.region %>/<%= trip.city %></p>
+      <h5 class="my-0"><%= trip.hotelName %></h5>
       <div class="pb-3">
-        <% for (let i=0; i < 5; i++) { %>
+        <% for (let i=0; i < trip.hotelStandard; i++) { %>
           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
           </svg>
@@ -15,20 +15,23 @@
       </div>
       <div class="mb-2">
         <i class="icon-calendar-empty"></i>
-        <span class="ms-2">start - end</span>
+        <span class="ms-2"><%= trip.start %> - <%= trip.end %></span>
       </div> 
       <div class="mb-2">
         <i class="icon-flight"></i>
-        <span class="ms-2">Katowice</span>
+        <span class="ms-2"><%= trip.from %></span>
       </div>
       <div class="mb-2">
         <i class="icon-food"></i>
-        <span class="ms-2">All inclusive</span>
+        <span class="ms-2"><%= trip.food %></span>
       </div>
     </div>
     <div class="col-12 mb-3 col-md-3 mb-md-0 d-flex flex-column align-items-end justify-content-between">
-      <span class="d-none d-md-inline fs-6 badge bg-dark">9.0</span>
-      <a href="#" class="btn btn-primary w-100">Open</a>
+      <span class="d-none d-md-inline fs-6 badge bg-dark"><%= trip.rating || 0 %></span>
+      <div class="w-100">
+        <p class="text-center">Price per person: <strong><%= trip.price %>€</strong></p>
+        <a href="/trips/<%= trip._id %>" class="btn btn-primary w-100">Open</a>
+      </div>
     </div>
   </div> 
 </div>

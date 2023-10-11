@@ -8,9 +8,12 @@
         id="<%= option.value %>"
         value="<%= option.value %>"
         type="radio" 
-        class="form-check-input"
-        <%- form[name] === option.value ? 'checked' : '' %>
-        <%- !form[name] ? 'checked' : '' %>
+        class="form-check-input <%= errors?.[name] ? 'is-invalid' : '' %>"
+        <% if (form[name]) { %>
+          <%- form[name] === option.value ? 'checked' : '' %>
+        <% } else { %>
+          <%- option.value === '' ? 'checked' : '' %>
+        <% } %>
       >
     </div>
   <% }) %>

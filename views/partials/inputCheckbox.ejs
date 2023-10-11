@@ -1,0 +1,29 @@
+<div class="mb-3">
+  <h6><%= label %></h6>
+  <% options.forEach(option => { %>
+    <div class="form-check">
+      <label for="<%= option.value %>" class="form-check-label"><%= option.label %></label>
+      <input 
+        name="<%= name %>"
+        id="<%= option.value %>"
+        value="<%= option.value %>"
+        type="checkbox" 
+        class="form-check-input <%= errors?.[name] ? 'is-invalid' : '' %>" 
+        <% if (Array.isArray(form[name])) { %>
+          <%- form[name].includes(option.value) ? 'checked' : '' %>
+        <% } else { %>
+          <%- form[name] === option.value ? 'checked' : '' %>
+        <% } %>
+
+        <% if (url.includes('/all-inclusive') && (option.value === 'All-inclusive')){ %>
+          checked
+          disabled
+        <% } %>
+        <% if (url.includes('/last-minute') && (option.value === 'Last-minute')){ %>
+          checked
+          disabled
+        <% } %>
+      >
+    </div>
+  <% }) %>
+</div>

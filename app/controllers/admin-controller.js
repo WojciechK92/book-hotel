@@ -2,6 +2,12 @@ import Admin from '../db/models/admin.js';
 import Trip from '../db/models/trip.js';
 import fs from 'fs';
 
+const calculateDays = (start, end) => {
+  const result = (new Date(end) - new Date(start))/1000/60/60/24 + 1;
+
+  return result;
+};
+
 class AdminController {
   showLoginForm(req, res) {
     if (req.session.admin) {
@@ -76,6 +82,7 @@ class AdminController {
       hotelStandard: req.body.hotelStandard, 
       start: req.body.start,
       end: req.body.end,
+      days: calculateDays(req.body.start, req.body.end),
       from: req.body.from,
       food: req.body.food,
       transport: req.body.transport,
@@ -129,6 +136,7 @@ class AdminController {
     trip.hotelStandard = req.body.hotelStandard;
     trip.start = req.body.start;
     trip.end = req.body.end;
+    trip.days = calculateDays(req.body.start, req.body.end);
     trip.from = req.body.from;
     trip.food = req.body.food;
     trip.transport = req.body.transport;
@@ -142,7 +150,6 @@ class AdminController {
       fs.unlinkSync(`public/uploads/${trip.image}`);
       trip.image = req.file.filename;
     }; 
-
     
     try {
       await trip.save();

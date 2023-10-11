@@ -10,7 +10,6 @@ const tripSchema = new Schema({
   country: {
     type: String,
     required: requiredExpression,
-    lowercase: true,
     trim: true,
     minLength: minLengthExpression,
     maxLength: maxLengthExpression,
@@ -19,7 +18,6 @@ const tripSchema = new Schema({
   region: {
     type: String,
     required: requiredExpression, 
-    lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
     maxLength: maxLengthExpression,
@@ -29,7 +27,6 @@ const tripSchema = new Schema({
   city: {
     type: String,
     required: requiredExpression, 
-    lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
     maxLength: maxLengthExpression,
@@ -38,7 +35,6 @@ const tripSchema = new Schema({
   hotelName: {
     type: String,
     required: requiredExpression, 
-    lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
     maxLength: maxLengthExpression,
@@ -59,10 +55,12 @@ const tripSchema = new Schema({
     required: requiredExpression, 
     validate: [validateDate, 'Wrong date!'],
   },
+  days: {
+    type: Number,
+  },
   from: {
     type: String,
     required: requiredExpression, 
-    lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
     maxLength: maxLengthExpression,
@@ -76,7 +74,6 @@ const tripSchema = new Schema({
   transport: {
     type: String,
     required: requiredExpression, 
-    lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
     maxLength: maxLengthExpression,
@@ -85,7 +82,6 @@ const tripSchema = new Schema({
   popular: {
     type: String,
     required: requiredExpression, 
-    lowercase: true,
     trim: true,
     minLength: minLengthExpression, 
     maxLength: maxLengthExpression,
