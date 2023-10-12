@@ -1,4 +1,4 @@
-<div class="container-fluid px-5">
+<div class="container-fluid px-5" id="searchBar">
   <div class="row justify-content-center gap-2 gap-lg-0">
     <div class="col-12 col-lg-3">
       <label for="where" class="form-label">Where?</label>
@@ -9,18 +9,33 @@
             <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
           </svg>
         </span>
-        <input id="where" name="where" class="form-control" type="search">
+        <input 
+          value="<%= form.where%>"
+          id="where" 
+          name="where" 
+          class="form-control" 
+          type="search">
       </div>
     </div>
     <div class="col-12 col-lg-5 mx-4">
       <div class="row">
         <div class="col">
           <label for="start" class="form-label">Start</label>
-          <input id="start" name="start" class="form-control" type="date">
+          <input 
+            value="<%= form.start %>"
+            id="start" 
+            name="start" 
+            class="form-control" 
+            type="date">
         </div>
         <div class="col">
           <label for="end" class="form-label">End</label>
-          <input id="end" name="end" class="form-control" type="date">
+          <input 
+            value="<%= form.end %>"
+            id="end" 
+            name="end" 
+            class="form-control" 
+            type="date">
         </div>
       </div>
     </div>
@@ -33,12 +48,18 @@
             <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
           </svg>
         </span> 
-        <input type="number" id="persons" name="persons" class="form-control text-center" value="2" min="1">
+        <input 
+          value="<%= form.persons || 2 %>" 
+          type="number" 
+          id="persons" 
+          name="persons" 
+          class="form-control text-center" 
+          min="1">
       </div>
     </div>
     <div class="div-for-search my-3 my-lg-0">
       <div>
-        <button class="btn btn-outline-primary" type="submit">Search</button>
+        <button class="btn btn-outline-primary">Search</button>
       </div>
     </div>
   </div>

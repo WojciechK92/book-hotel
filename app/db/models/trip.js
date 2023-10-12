@@ -1,10 +1,13 @@
 import mongoose, { Schema } from 'mongoose';
-import { validateLetters, validateDate } from '../validators.js';
+import { validateLetters } from '../validators.js';
 
 const validateLettersExpression = [validateLetters, 'Only alphabet characters and numbers (0-10) are available!'];
 const requiredExpression = [true, 'This field is required!'];
 const minLengthExpression = [3, 'Minimum amount of characters: 3'];
 const maxLengthExpression = [30, 'Maximum amount of characters: 30'];
+
+const today = new Date();
+const twoYears = new Date().setFullYear(today.getFullYear() + 2);
 
 const tripSchema = new Schema({
   country: {
@@ -46,14 +49,16 @@ const tripSchema = new Schema({
     validate: validateLettersExpression,
   },
   start: {
-    type: String,
+    type: Date,
     required: requiredExpression, 
-    validate: [validateDate, 'Wrong date!'],
+    min: [today, 'The correct time period starts tomorrow and ends in 2 years'],
+    max: [twoYears, 'The correct time period starts tomorrow and ends in 2 years'],
   },
   end: {
-    type: String,
+    type: Date,
     required: requiredExpression, 
-    validate: [validateDate, 'Wrong date!'],
+    min: [today, 'The correct time period starts tomorrow and ends in 2 years'],
+    max: [twoYears, 'The correct time period starts tomorrow and ends in 2 years'],
   },
   days: {
     type: Number,

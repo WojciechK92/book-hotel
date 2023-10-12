@@ -1,6 +1,6 @@
 <article>
   <div class="container-fluid container-lg my-4">
-  <Header>
+  <Header class="py-3">
     <% if (url.includes('/all-inclusive')) { %>
       <h2 class="letter-spacing">All-inclusive</h2>
     <% } else if (url.includes('/last-minute')) { %>
@@ -9,9 +9,6 @@
       <h2 class="letter-spacing">Trips</h2>
     <% } %> 
   </Header>
-    <div class="my-4">
-      <h5>Selected filters: </h5>
-    </div>
     <button class="btn btn-primary w-100 mb-4 py-2 d-lg-none" type="button">Filtration</button>
     <div class="row gap-4 gap-lg-0">
       <div class="col-12 filtration">

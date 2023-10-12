@@ -19,3 +19,12 @@
 
 </head>
 <body>
+  <% if (url.includes('/login') || url.includes('/register')) { %>
+    <form method="post"> 
+  <% } else if (url.includes('/admin/add-trip') || (url.includes('/admin/edit-trip'))) { %>
+    <form method="post" enctype="multipart/form-data">
+  <% } else if (url === '/') { %>
+    <form action="/trips">
+  <% } else { %>
+    <form>
+  <% } %>
