@@ -9,9 +9,9 @@
       <h2 class="letter-spacing">Trips</h2>
     <% } %> 
   </Header>
-    <button class="btn btn-primary w-100 mb-4 py-2 d-lg-none" type="button">Filtration</button>
+    <button class="btn btn-secondary w-100 mb-4 py-2 d-lg-none" id="filtration-button" type="button">Filtration</button>
     <div class="row gap-4 gap-lg-0">
-      <div class="col-12 filtration">
+      <div class="col-12 d-none" id="filtration-form">
         <aside>
           <%- include('./partials/filtration') %>
         </aside>

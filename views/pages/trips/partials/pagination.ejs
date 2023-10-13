@@ -1,15 +1,19 @@
 <nav aria-label="Page navigation" class="mt-4 d-flex justify-content-center">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+      <a class="page-link" id="previous-page" href="#" aria-label="Previous" data-page="previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <% for (let i=1; i <= pagesAmount; i++) { %>
+      <li class="page-item">
+        <a class="page-link <%= page == i ? 'active' : '' %> " href="#" data-page="<%= i %>">
+          <%= i %>
+        </a>
+      </li>
+    <% } %>
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+      <a class="page-link" id="next-page" href="#" aria-label="Next" data-page="next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

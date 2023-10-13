@@ -12,19 +12,16 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav mt-3 my-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link <%= url === '/' ? 'active' : '' %>" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/trips">Trips</a>
+          <a class="nav-link <%= url.includes('/trips') ? 'active' : '' %>" href="/trips">Trips</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/all-inclusive">All inclusive</a>
+          <a class="nav-link <%= url.includes('/all-inclusive') ? 'active' : '' %>" href="/all-inclusive">All inclusive</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/last-minute">Last minute</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/get-inspired">Get inspired</a>
+          <a class="nav-link <%= url.includes('/last-minute') ? 'active' : '' %>" href="/last-minute">Last minute</a>
         </li>
       </ul>
       <ul class="navbar-nav">
@@ -34,10 +31,10 @@
           </li>
         <% } else { %>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Log in</a>
+            <a class="nav-link <%= url.includes('/login') ? 'active' : '' %>" href="/login">Log in</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
+            <a class="nav-link <%= url.includes('/register') ? 'active' : '' %>" href="/register">Register</a>
           </li>
         <% } %>
       </ul>

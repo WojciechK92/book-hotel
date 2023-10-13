@@ -1,99 +1,116 @@
 import Trip from "../db/models/trip.js";
 
-export const tripsFiltration = (queries, url) => {
-  let query = Trip.find({})
-
-  // filtration 'all-inclusive' page only
-  if (url.includes('/all-inclusive')) {
-    if (!queries.food) {
-      query = query.find({ food: 'All-inclusive'});
-    } else {
-      query = query.find({ 
-        $or: [
-          { food: 'All-inclusive'},
-          { food: queries.food },
-          { food: { $in: queries.food }},
-      ]});
-    }
-  };
+const tripsFiltration = async (queries, url) => {
+  // filtration
+  let where = {};
+  // declaration and iniialization
+  where.$and = [{ places: { $gte: 1 } }];
   
-  // filtration 'last-minute' page only
-  if (url.includes('/last-minute')) {
-    if (!queries.popular) {
-      query = query.find({ popular: 'Last-minute'});
-    } else {
-      query = query.find({ 
-        $or: [
-          { popular: 'Last-minute'},
-          { popular: queries.popular},
-          { popular: { $in: queries.popular}},
-        ]
-      });
-    };
+  // filtration 'all-inclusive' page
+  if (url.includes('/all-inclusive')) {
+    const obj = { $or: [
+      { food: 'All-inclusive' },
+      { food: { $in: queries.food } },
+    ]};
+    where.$and = [obj];
   };
 
-  // filtration for all pages 
+  // filtration 'last-minute' page
+  if (url.includes('/last-minute')) {
+    const obj = { $or: [
+      { popular: 'Last-minute'},
+      { popular: { $in: queries.popular }},
+    ]};
+    where.$and = [obj];
+  };
+
+  // // filtration for all pages 
+
   if (queries.where) {
-    query = query.find({ 
-      $or: [
+    const obj = { $or: [
         { country: { $regex: queries.where, $options: 'i' } },
         { region: { $regex: queries.where, $options: 'i'} },
         { city: { $regex: queries.where, $options: 'i'} },
-      ]
-    });
+      ],
+    };
+    where.$and.push(obj);
   };
 
   if (queries.start) {
-    const start = new Date(queries.start);
-    query = query.find({ 
-      start: { $gte: start },
-    });
+    const startDate = new Date(queries.start);
+    where.$and.push({ start: { $gte: startDate } });
   };
+
   if (queries.end) {
-    const end = new Date(queries.end);
-    query = query.find({ 
-      end: { $lte: end }
-    });
+    const endDate = new Date(queries.end);
+    where.$and.push({ end: { $lte: endDate } });
   };
 
   if (queries.persons) {
-    query = query.find({ places: { $gte: queries.persons } });
+    where.$and.push({ places: { $gte: queries.persons } });
   };
-
-  if (queries.sort) query = query.sort({ [queries.sort]: 'asc'});
-
-  if (queries.food) {
-    query = query.find({ 
+  
+  if (queries.food && !url.includes('/all-inclusive')) {
+    const obj = { 
       $or: [
         { food: queries.food },
         { food: { $in: queries.food }},
-    ]});
+      ],
+    };
+    where.$and.push(obj);
   };
   
-  if (queries.hotelStandard) query = query.find({ hotelStandard: { $gte: queries.hotelStandard }})
-
+  if (queries.hotelStandard) {
+    const obj = { hotelStandard: { $gte: queries.hotelStandard } };
+    where.$and.push(obj);
+  };
+  
   if (queries.priceMin || queries.priceMax) { 
-    query = query.find({ 
-      price: { $gte: queries.priceMin ?? 0, $lte: queries.priceMax ?? 100000 }
-    });
+    const obj = { price: { $gte: queries.priceMin || 0, $lte: queries.priceMax || 100000 } };
+    where.$and.push(obj);
   };
   
-  if (queries.days) query = query.find({ 
-    days: { $gte: queries.days.split('-')[0], $lte: queries.days.split('-')[1] }
-  });
+  if (queries.days) { 
+    const obj = { days: { $gte: queries.days.split('-')[0], $lte: queries.days.split('-')[1] } };
+    where.$and.push(obj);
+  };
+  
+  if(queries.transport) {
+    const obj = { transport: queries.transport };
+    where.$and.push(obj);
+  };
+  
+  if (queries.rating) {
+    const obj = { rating: { $gte: queries.rating } };
+    where.$and.push(obj);
+  };
 
-  if(queries.transport) query = query.find({ transport: { $regex: queries.transport }});
-
-  if (queries.rating) query = query.find({ rating: { $gte: queries.rating }});
-
-  if (queries.popular) {
-    query = query.find({
+  if (queries.popular && !url.includes('/last-minute')) {
+    const obj = { 
       $or: [
         { popular: queries.popular }, 
         { popular: { $in: queries.popular }},
       ],
-    });
+    };
+    where.$and.push(obj);
   };
 
-  return query;
+  let query = Trip.find(where);
+
+  // sorting
+  if (queries.sort) query = query.sort({ [queries.sort]: 'asc', _id: 'asc'})
+  
+  // pagination
+  const tripsAmount = await Trip.find(where).count();  
+
+  const page = (queries.page > 0 ) ? queries.page : 1; 
+  const perPage = 2;
+  const pagesAmount = Math.ceil(tripsAmount/perPage);
+
+  query = query.skip(perPage * (page - 1));
+  query = query.limit(perPage);
+  
+  return { query, page, pagesAmount };
 };
+
+export default tripsFiltration;

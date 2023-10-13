@@ -76,7 +76,7 @@ body {
   border-radius: 5px;
   padding: 5px 50px;
 }
-.filtration {
+#filtration-form {
   width: 300px;
 }
 
@@ -85,6 +85,12 @@ body {
   right: 10px;
   top: 10px;
   cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  #filtration-form {
+    display: block !important;
+  }
 }
 
 @media (max-width: 991px) {
@@ -101,7 +107,7 @@ body {
   .container-galery {
   padding: 30px 0px;
   }
-  .filtration {
+  #filtration-form {
     width: 100%;
   }
   .letter-spacing {
