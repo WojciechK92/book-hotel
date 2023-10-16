@@ -32,9 +32,9 @@
                 <%= user.email %>
               </button>
               <ul class="dropdown-menu m-0 p-0 mt-lg-2">
-                <li><a class="dropdown-item <%= url.includes('/user/trips') ? 'active' : '' %>" href="/user/trips">My trips</a></li>
-                <li><a class="dropdown-item <%= url.includes('/user/edit') ? 'active' : '' %>" href="/user/edit">Edit profile</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item <%= url.includes('/profile/trips') ? 'active' : '' %>" href="/profile/trips">My trips</a></li>
+                <li><a class="dropdown-item <%= url.includes('/profile/edit') ? 'active' : '' %>" href="/profile/edit">Edit profile</a></li>
+                <li><hr class="dropdown-divider my-0"></li>
                 <li><a class="dropdown-item" href="/logout">Log out</a></li>
               </ul>
             </div>
