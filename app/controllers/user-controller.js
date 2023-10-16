@@ -66,6 +66,35 @@ class UserController {
     res.redirect('/');
   };
 
+  async showEditProfileForm(req, res) {
+    const user = await User.findById(req.session.user._id);
+
+    res.render('pages/auth/edit', {
+      layout: 'layouts/auth',
+      title: 'Edit profile',
+      form: user,
+    });
+  };
+
+  async editProfile(req, res) {
+    try {
+      const user = await User.findById(req.session.user._id);
+      user.email = req.body.email;    
+      user.password = req.body.password;
+      
+      await user.save();
+
+      req.session.user = user;
+      res.redirect('/profile/edit');
+    } catch(e) {
+      res.render('pages/auth/edit', {
+        layout: 'layouts/auth',
+        title: 'Edit profile',
+        form: req.body,
+        errors: e.errors,
+      });
+    };
+  };
 };
 
 export default new UserController;

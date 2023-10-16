@@ -18,6 +18,9 @@ router.get('/logout', UserController.logout);
 router.get('/register', UserController.showRegisterForm);
 router.post('/register', UserController.register);
 
+router.get('/profile/edit', UserController.showEditProfileForm);
+router.post('/profile/edit', UserController.editProfile);
+
 router.get('/admin', AdminController.showAdminPanel);
 router.get('/admin/add-trip', AdminController.showAddTripForm);
 router.post('/admin/add-trip', upload.single('image'), errorHandlerMiddleware, AdminController.addTrip);
