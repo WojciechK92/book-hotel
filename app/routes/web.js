@@ -10,6 +10,9 @@ const router = new express.Router();
 
 router.get('/', PageController.showHomePage);
 router.get('/all-inclusive', TripController.showAllInclusive);
+router.get('/trips/:id', TripController.showTrip);
+router.post('/trips/bookTrip', TripController.bookTrip);
+
 router.get('/login', UserController.showLoginForm);
 router.post('/login', UserController.login);
 router.get('/logout', UserController.logout);
@@ -18,6 +21,7 @@ router.post('/register', UserController.register);
 
 router.get('/profile/edit', UserController.showEditProfileForm);
 router.post('/profile/edit', UserController.editProfile);
+router.get('/profile/trips', UserController.showProfileTrips);
 
 router.get('/admin', AdminController.showAdminPanel);
 router.get('/admin/add-trip', AdminController.showAddTripForm);

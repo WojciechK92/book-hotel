@@ -1,5 +1,8 @@
+import Trip from '../db/models/trip.js';
+import User from '../db/models/user.js';
+
 class TripController {
-  showAllInclusive(req, res) {
+  async showAllInclusive(req, res) {
     const food = [
       {value: 'all-inclusive', label: 'All inclusive', checked: true}, 
       {value: 'HB', label: 'Breakfast and dinner', checked: false}, 
@@ -14,15 +17,74 @@ class TripController {
       {value: 'poland2024', label: 'Poland 2024', checked: true}, 
     ];
     
-    const trips = [
-      1, 2, 3
-    ];
+    try {
+      const trips = await Trip.find({});
+
+      res.render('pages/trips/trips', {
+        food,
+        popular,
+        trips, 
+      });
+    } catch(e) {
+      console.log(e.errors); 
+    };
+  };
+
+  async showTrip(req, res) {
+    const { id } = req.params;
+
+    try {
+      const trip = await Trip.findById(id);
+
+      res.render('pages/trips/trip', {
+        trip,
+      });
+    } catch(e) {
+      console.log(e.errors);
+    };
+
+  };
+
+  async bookTrip(req, res) {
+    const { tripId, option } = req.body; 
     
-    res.render('pages/trips/trips', {
-      food,
-      popular,
-      trips, 
-    });
+    try {
+      const trip = await Trip.findById(tripId);
+      if (!trip) throw new Error("Trip doesn't exist");
+  
+      if (option === 'add') {
+        const trips = req.session.user.trips;
+        trips.push(trip._id.toString());
+
+        const filter = { _id: req.session.user._id };
+        const update = { trips };
+        const options = { runValidators: true };
+
+        await User.updateOne(filter, update, options);
+
+        const user = await User.findById(req.session.user._id);
+        req.session.user = user;
+
+        res.status(201).json({ message: 'Trip added' });
+          
+      } else {
+
+        const trips = req.session.user.trips.filter(id => id !== tripId)
+        
+        const filter = { _id: req.session.user._id };
+        const update =  { trips };
+        const options = { runValidators: true };
+       
+        await User.updateOne(filter, update, options);
+        const user = await User.findById(req.session.user._id);
+        req.session.user = user;
+  
+        res.sendStatus(204);
+      };
+
+    } catch(e) {
+      console.log(e);
+    }
   };
 };
 

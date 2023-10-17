@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="card card-body my-3 bg-light">
+    <div class="row">
+      <div class="col-12 col-lg-4 mb-lg-0 d-flex align-items-center justify-content-center mb-3">
+        <img src="/uploads/<%= trip.image %>" alt="Country" class="img-thumbnail">
+      </div>
+      <div class="col-12 mb-3 col-lg-5 mb-lg-0 border-end border-lg">
+        <p class="text-muted"><%= trip.country %>/<%= trip.region %>/<%= trip.city %></p>
+        <h5 class="my-0"><%= trip.hotelName %></h5>
+        <div class="pb-3">
+          <% for (let i=0; i < trip.hotelStandard; i++) { %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+          <% } %>
+        </div>
+        <div class="mb-2">
+          <i class="icon-calendar-empty"></i>
+          <span class="ms-2"><%- trip.start.toISOString().slice(0, 10) %> - <%- trip.end.toISOString().slice(0,10) %></span>
+        </div> 
+        <div class="mb-2">
+          <i class="icon-flight"></i>
+          <span class="ms-2"><%= trip.from %></span>
+        </div>
+        <div class="mb-2">
+          <i class="icon-food"></i>
+          <span class="ms-2"><%= trip.food %></span>
+        </div>
+        <hr/>
+        <div class="mb-2">
+          <span>Free places: </span>
+          <span class="ms-2"><%= trip.places %></span>
+        </div>
+        <div class="mb-2">
+          <span>Mean of transport: </span>
+          <span class="ms-2"><%= trip.transport %></span>
+        </div>
+        <div class="mb-2">
+          <span>Popular: </span>
+          <span class="ms-2"><%= trip.popular %></span>
+        </div>
+        <div class="mb-2 d-lg-none">
+          <span>Rating: </span>
+          <span class="ms-2 badge bg-dark"><%= trip.rating || 0 %></span>
+        </div>
+      </div>
+      <div class="col-12 mb-3 col-lg-3 mb-lg-0 d-flex flex-column align-items-end justify-content-between">
+        <span class="d-none d-lg-inline fs-6 badge bg-dark"><%= trip.rating || 0 %></span>
+        <% if (user) { %>
+          <% if (user.trips.includes(trip._id.toString())) { %>
+            <a class="booking btn btn-danger w-100" data-option="remove" data-trip-id="<%- trip._id %>" href="#" class="btn btn-danger w-100">
+              Cancel reservation
+            </a>
+          <% } else { %>
+            <% if (user.trips.length < 2) { %>
+              <a class="booking btn btn-primary w-100" data-option="add" data-trip-id="<%- trip._id %>" href="#" class="btn btn-primary w-100">
+                Book trip 
+              </a>
+            <% } else { %>
+              <h1 class="align-self-center h5">
+                <p class="badge bg-secondary text-wrap p-3 m-0">You can only book 2 trips!</p>
+              </h1>
+            <% } %>
+          <% } %> 
+        <% } else { %>
+          <h1 class="align-self-center h5 m-0 mb-lg-3">
+            <p class="badge bg-secondary text-wrap m-0 py-2">Register or log in to book your trip!</p>
+          </h1>
+        <% } %>
+      </div>
+    </div> 
+  </div>
+</div>

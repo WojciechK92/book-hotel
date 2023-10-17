@@ -142,4 +142,7 @@ body {
     color: white;
     background-color: transparent;
   }
+  .border-lg {
+    border: none !important;
+  }
 }

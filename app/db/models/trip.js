@@ -50,14 +50,12 @@ const tripSchema = new Schema({
     validate: validateLettersExpression,
   },
   start: {
-    type: String,
+    type: Date,
     required: requiredExpression, 
-    validate: [validateDate, 'Wrong date!'],
   },
   end: {
-    type: String,
+    type: Date,
     required: requiredExpression, 
-    validate: [validateDate, 'Wrong date!'],
   },
   from: {
     type: String,
@@ -102,6 +100,9 @@ const tripSchema = new Schema({
     required: requiredExpression, 
     min: [0, 'Minimum: 0'],
     max: [20000, 'Maximum: 20 000'],
+  },
+  rating: {
+    type: Number,
   },
   admin: {
     type: mongoose.Types.ObjectId,

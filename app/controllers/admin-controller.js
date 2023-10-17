@@ -67,6 +67,7 @@ class AdminController {
   };
 
   async addTrip(req, res) {
+    const randomNumber = (Math.random() * 10).toFixed(1);
 
     const trip = new Trip({
       country: req.body.country,
@@ -82,6 +83,7 @@ class AdminController {
       popular: req.body.popular,
       places: req.body.places,
       price: req.body.price,
+      rating: randomNumber,
       admin: req.session.admin._id,
       image: req.file?.filename,
     });

@@ -17,3 +17,7 @@ export const validateDate = (value) => {
   const re = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
   return re.test(value);
 };
+
+export const checkArray = (value) => {
+  return value.length <= 2;
+};
