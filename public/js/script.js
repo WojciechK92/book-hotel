@@ -45,9 +45,11 @@ if (document.querySelector('.pagination')) {
 const filtrationForm = document.querySelector('#filtration-form');
 const filtrationButton = document.querySelector('#filtration-button');
 
-filtrationButton.addEventListener('click', () => {
-  filtrationForm.classList.toggle('d-none');
-});
+if (filtrationButton) {
+  filtrationButton.addEventListener('click', () => {
+    filtrationForm.classList.toggle('d-none');
+  });
+};
 
 
 // dropdown in menu
@@ -58,4 +60,35 @@ if (dropdownMenu) {
   navbar.addEventListener("mouseleave", function(){
     dropdownMenu.classList.remove('show');
   });
+};
+
+// trip booking
+const linkButtons = document.querySelectorAll('.booking');
+
+if (linkButtons.length) {
+  const bookTrip = async (e) => {
+    e.preventDefault();
+    const option = e.target.dataset.option;
+    const tripId = e.target.dataset.tripId;
+
+    try {
+      await fetch('/trips/bookTrip', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }, 
+        body: JSON.stringify({
+          tripId,
+          option,
+        }), 
+      }); 
+
+      location.reload();
+    } catch(e) {
+      console.log(e);
+    };
+  };
+
+  linkButtons.forEach(link => link.addEventListener('click', bookTrip));
 };

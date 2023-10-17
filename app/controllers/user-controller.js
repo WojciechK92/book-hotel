@@ -1,4 +1,5 @@
 import User from '../db/models/user.js';
+import Trip from '../db/models/trip.js';
 
 class UserController {
   showRegisterForm(req, res) {
@@ -67,13 +68,17 @@ class UserController {
   };
 
   async showEditProfileForm(req, res) {
-    const user = await User.findById(req.session.user._id);
-
-    res.render('pages/auth/edit', {
-      layout: 'layouts/auth',
-      title: 'Edit profile',
-      form: user,
-    });
+    try {
+      const user = await User.findById(req.session.user._id);
+  
+      res.render('pages/auth/edit', {
+        layout: 'layouts/auth',
+        title: 'Edit profile',
+        form: user,
+      });
+    } catch(e) {
+      console.log(e);
+    }
   };
 
   async editProfile(req, res) {
@@ -93,6 +98,21 @@ class UserController {
         form: req.body,
         errors: e.errors,
       });
+    };
+  };
+
+  async showProfileTrips(req, res) {
+    try {
+      const user = await User.findById(req.session.user._id); 
+      const trips = await Trip.find({ _id: { $in: user.trips } });
+  
+      res.render('pages/trips/profileTrips', {
+        layout: 'layouts/auth',
+        title: 'My trips',
+        trips,
+      });
+    } catch(e) {
+      console.log(e);
     };
   };
 };

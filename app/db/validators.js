@@ -12,3 +12,7 @@ export const validateLetters = (value) => {
   const re = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻqvxQVX1234567890 -]+$/;
   return re.test(value);
 };
+
+export const checkArray = (value) => {
+  return value.length <= 2;
+};

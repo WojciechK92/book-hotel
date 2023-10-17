@@ -32,8 +32,8 @@
               <td><%= trip.city %></td>
               <td><%= trip.hotelName %></td>
               <td><%= trip.hotelStandard %></td>
-              <td><%= trip.start.toISOString().slice(0, 10) %></td>
-              <td><%= trip.end.toISOString().slice(0, 10)  %></td>
+              <td><%= trip.start %></td>
+              <td><%= trip.end %></td>
               <td><%= trip.from %></td>
               <td><%= trip.price %></td>
               <td><a href="/admin/edit-trip/<%= trip._id %>" class="btn btn-warning">Edit</a></td>

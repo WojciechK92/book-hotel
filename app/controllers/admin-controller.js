@@ -8,6 +8,11 @@ const calculateDays = (start, end) => {
   return result;
 };
 
+const randomNumber = () => {
+  const number = +(Math.random() * 10).toFixed(1);
+  return (number > 5) ? number : (number + 4);
+};
+
 class AdminController {
   showLoginForm(req, res) {
     if (req.session.admin) {
@@ -89,6 +94,7 @@ class AdminController {
       popular: req.body.popular,
       places: req.body.places,
       price: req.body.price,
+      rating: randomNumber(),
       admin: req.session.admin._id,
       image: req.file?.filename,
     });
@@ -142,6 +148,7 @@ class AdminController {
     trip.transport = req.body.transport;
     trip.popular = req.body.popular;
     trip.places = req.body.places;
+    trip.rating = randomNumber(),
     trip.price = req.body.price;
     trip.admin = req.session.admin._id;
 

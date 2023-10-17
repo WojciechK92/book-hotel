@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { validateEmail, validatePassword } from '../validators.js';
+import { validateEmail, validatePassword, checkArray } from '../validators.js';
 import bcrypt from 'bcrypt';
 
 export const userSchema = new Schema({
@@ -15,6 +15,10 @@ export const userSchema = new Schema({
     type: String,
     required: [true, 'This field is required!'],
     validate: [value => validatePassword(value), 'Too weak password!'],
+  },
+  trips: {
+    type: Array,
+    validate: checkArray,
   },
 });
 
