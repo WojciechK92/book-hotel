@@ -1,16 +1,82 @@
 <nav aria-label="Page navigation" class="mt-4 d-flex justify-content-center">
-  <ul class="pagination">
+  <ul class="pagination" data-pages-amount="<%= pagesAmount %>">
     <li class="page-item">
       <a class="page-link" id="previous-page" href="#" aria-label="Previous" data-page="previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <% for (let i=1; i <= pagesAmount; i++) { %>
-      <li class="page-item">
-        <a class="page-link <%= page == i ? 'active' : '' %> " href="#" data-page="<%= i %>">
-          <%= i %>
-        </a>
-      </li>
+    <% if (pagesAmount >= 8) { %>
+      <% if (page < 4) { %>
+        <% for (let i=1; i < 4; i++) { %>
+          <li class="page-item">
+            <a class="page-link <%= page == i ? 'active' : '' %> " href="#" data-page="<%= i %>">
+              <%= i %>
+            </a>
+          </li>
+        <% } %>
+        <li class="page-item" data-page="<% page %>">
+          <a class="page-link" href="#" data-page="<%= page %>">
+            ...
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link <%= page == pagesAmount ? 'active' : '' %> " href="#" data-page="<%= pagesAmount %>">
+            <%= pagesAmount %>
+          </a>
+        </li>
+      <% } else if (page < (pagesAmount - 2)) { %>
+        <li class="page-item">
+          <a class="page-link <%= page == 1 ? 'active' : '' %> " href="#" data-page="1">
+            1
+          </a>
+        </li>
+        <li class="page-item" data-page="<% page %>">
+          <a class="page-link" href="#" data-page="<%= page %>">
+            ...
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link active" href="#" data-page="<%= page %>">
+            <%= page %>
+          </a>
+        </li>
+        <li class="page-item" data-page="<% page %>">
+          <a class="page-link" href="#" data-page="<%= page %>">
+            ...
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link <%= page == pagesAmount ? 'active' : '' %> " href="#" data-page="<%= pagesAmount %>">
+            <%= pagesAmount %>
+          </a>
+        </li>
+      <% } else { %>
+        <li class="page-item">
+          <a class="page-link <%= page == 1 ? 'active' : '' %> " href="#" data-page="1">
+            1 
+          </a>
+        </li>
+        <li class="page-item" data-page="<% page %>">
+          <a class="page-link" href="#" data-page="<%= page %>">
+            ...
+          </a>
+        </li>
+        <% for (let i = (pagesAmount - 2); i <= pagesAmount; i++) { %>
+        <li class="page-item">
+          <a class="page-link <%= page == i ? 'active' : '' %> " href="#" data-page="<%= i %>">
+            <%= i %>
+          </a>
+        </li>
+        <% } %>
+      <% } %>
+    <% } else { %>
+      <% for (let i=1; i <= pagesAmount; i++) { %>
+        <li class="page-item">
+          <a class="page-link <%= page == i ? 'active' : '' %> " href="#" data-page="<%= i %>">
+            <%= i %>
+          </a>
+        </li>
+      <% } %>
     <% } %>
     <li class="page-item">
       <a class="page-link" id="next-page" href="#" aria-label="Next" data-page="next">

@@ -12,7 +12,7 @@
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
-            <a href="#" class="carousel-item active">
+            <a href="/trips?where=maledives" class="carousel-item active">
               <img src="/img/Maledives.jpg" class="d-block w-100" alt="Maledives">
               <div class="carousel-caption d-flex justify-content-center">
                 <div class="shadow-box">
@@ -21,7 +21,7 @@
                 </div>
               </div>
             </a>
-            <a href="#" class="carousel-item">
+            <a href="/trips?where=indonesia" class="carousel-item">
               <img src="/img/Indonesia.jpg" class="d-block w-100" alt="Indonesia">
               <div class="carousel-caption d-flex justify-content-center">
                 <div class="shadow-box">
@@ -30,7 +30,7 @@
                 </div>
               </div>
             </a>
-            <a href="#" class="carousel-item">
+            <a href="/trips?where=zanzibar" class="carousel-item">
               <img src="/img/Zanzibar.jpg" class="d-block w-100" alt="Zanzibar">
               <v class="carousel-caption d-flex justify-content-center">
                 <div class="shadow-box">
@@ -60,7 +60,7 @@
           <% summer.forEach(country => { %>
             <div class="col-6 col-md-4 px-0">
               <div class="photo">
-                <a href="#">
+                <a href="/trips?where=<%= country %>">
                   <img src="/img/<%=country%>.jpg" alt="<%=country%>" class="thumbnail-image">
                   <span class="thumbnail-label"><%=country%></span>
                 </a>
@@ -79,7 +79,7 @@
           <% poland.forEach(country => { %>
             <div class="col-6 col-md-4 px-0">
               <div class="photo">
-                <a href="#">
+                <a href="/trips?where=<%= country %>">
                   <img src="/img/<%=country%>.jpg" alt="<%=country%>" class="thumbnail-image">
                   <span class="thumbnail-label"><%=country%></span>
                 </a>

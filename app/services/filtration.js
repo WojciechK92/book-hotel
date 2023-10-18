@@ -104,7 +104,7 @@ const tripsFiltration = async (queries, url) => {
   const tripsAmount = await Trip.find(where).count();  
 
   const page = (queries.page > 0 ) ? queries.page : 1; 
-  const perPage = 2;
+  const perPage = 4;
   const pagesAmount = Math.ceil(tripsAmount/perPage);
 
   query = query.skip(perPage * (page - 1));

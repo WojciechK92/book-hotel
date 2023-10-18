@@ -16,6 +16,7 @@ class TripController {
       form: {...queries},
       page,
       pagesAmount,
+      title: 'Trips',
     });
   };
 
@@ -27,6 +28,8 @@ class TripController {
 
       res.render('pages/trips/trip', {
         trip,
+        title: 'Trip',
+        layout: 'layouts/auth'
       });
     } catch(e) {
       console.log(e.errors);
@@ -36,7 +39,6 @@ class TripController {
 
   async bookTrip(req, res) {
     const { tripId, option } = req.body; 
-    console.log('yes')
     
     try {
       const trip = await Trip.findById(tripId);

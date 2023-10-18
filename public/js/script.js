@@ -2,13 +2,14 @@
 const paginationLinks = document.querySelectorAll('.page-link');
 const previousPageLink = document.querySelector('#previous-page');
 const nextPageLink = document.querySelector('#next-page');
+const pagination = document.querySelector('.pagination'); 
 
 const redirectToPage = (searchParams) => {
   const url = window.location.origin + window.location.pathname + '?' + searchParams.toString();
   window.location.href = url; 
 };
 
-if (document.querySelector('.pagination')) {
+if (pagination) {
   
   const clickHandler = (e) => {
     e.preventDefault();
@@ -31,7 +32,7 @@ if (document.querySelector('.pagination')) {
   
   const { searchParams } = new URL(window.location);    
   const currentPage = Number(searchParams.get('page') || 1);
-  const pagesAmount = paginationLinks.length - 2;
+  const pagesAmount = +pagination.dataset.pagesAmount;
   
   if (currentPage === 1) previousPageLink.style.visibility = 'hidden'; 
   if ((currentPage === pagesAmount) || (pagesAmount === 0)) nextPageLink.style.visibility = 'hidden';
@@ -50,7 +51,6 @@ if (filtrationButton) {
     filtrationForm.classList.toggle('d-none');
   });
 };
-
 
 // dropdown in menu
 const dropdownMenu = document.querySelector('.dropdown-menu');

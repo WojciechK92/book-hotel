@@ -1,6 +1,6 @@
 class PageController {
   showHomePage(req, res) {
-    const summer = ['USA', 'France', 'Greece', 'Italy', 'UK', 'Spain'];
+    const summer = ['USA', 'France', 'Greece', 'Italy', 'England', 'Spain'];
     const poland = ['Cracow', 'Gdansk', 'Warsaw', 'Wroclaw', 'Bieszczady', 'Bialystok'];
 
     res.render('pages/home', {

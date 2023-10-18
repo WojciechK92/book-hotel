@@ -91,11 +91,13 @@ body {
   opacity: 0;
   transition: all 0.3s ease-in-out;
   max-height: 0;
+  z-index: -1;
 }
 .dropdown-menu.show {
   display: block;
   opacity: 1;
   max-height: 150px;
+  z-index: 10;
 }
 .dropdown-item {
   color: rgb(235, 235, 235);

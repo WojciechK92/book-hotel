@@ -1,4 +1,7 @@
 <div class="container mt-3">
+  <% if (trips.length === 0) { %>
+    <h4 class="text-center my-5">Your list is empty!</h4>
+  <% } %>
   <% trips.forEach(trip => { %>
     <div class="card mb-3">
       <div class="card-body bg-light">
@@ -6,7 +9,7 @@
           <div class="col-12 mb-3 col-md-4 mb-md-0 d-flex align-items-center justify-content-center mb-3">
             <img src="/uploads/<%= trip.image %>" alt="<%= trip.country %>" class="img-thumbnail">
           </div>
-          <div class="col-12 mb-3 col-md-5 mb-md-0 border-end border-lg">
+          <div class="col-12 mb-3 col-lg-5 mb-lg-0 border-end border-lg">
             <p class="text-muted"><%= trip.country %>/<%= trip.region %>/<%= trip.city %></p>
             <h5 class="my-0"><%= trip.hotelName %></h5>
             <div class="pb-3">
@@ -29,9 +32,10 @@
               <span class="ms-2"><%= trip.food %></span>
             </div>
           </div>
-          <div class="col-12 mb-3 col-md-3 mb-md-0 d-flex flex-column align-items-end justify-content-between">
-            <span class="d-none d-md-inline fs-6 badge bg-dark"><%= trip.rating || 0 %></span>
+          <div class="col-12 mb-3 col-lg-3 mb-lg-0 d-flex flex-column align-items-end justify-content-between">
+            <span class="fs-6 badge bg-dark"><%= trip.rating %></span>
             <div class="w-100">
+              <p class="text-center">Price per person: <span class="fw-bold"><%= trip.price %>€</span></p>
               <a class="btn btn-primary w-100 mb-2" href="/trips/<%= trip._id %>">Open</a>
               <a class="booking btn btn-danger w-100" data-option="remove" data-trip-id="<%- trip._id %>" href="#" class="btn btn-danger w-100">
                 Cancel reservation
