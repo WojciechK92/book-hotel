@@ -9,6 +9,7 @@ import config from './config.js';
 import userMiddleware from './middleware/user-middleware.js';
 import { isAdminAuthenticated, isUserAuthenticated } from './middleware/is-auth-middleware.js'
 import helmet from 'helmet';
+import rateLimiterMiddleware from './middleware/rate-limiter-middleware.js';
 
 import './db/mongoose.js';
 
@@ -21,6 +22,8 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 * 24 * 2 }, // 2 day,
   resave: false
 }));
+
+app.use(rateLimiterMiddleware);
 
 app.use(helmet({
   contentSecurityPolicy: {
