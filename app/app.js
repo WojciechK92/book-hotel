@@ -8,6 +8,7 @@ import session from 'express-session';
 import config from './config.js';
 import userMiddleware from './middleware/user-middleware.js';
 import { isAdminAuthenticated, isUserAuthenticated } from './middleware/is-auth-middleware.js'
+import helmet from 'helmet';
 
 import './db/mongoose.js';
 
@@ -19,6 +20,16 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 1000 * 60 * 60 * 24 * 2 }, // 2 day,
   resave: false
+}));
+
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "cdn.jsdelivr.net"],
+      styleSrc: ["'self'", "cdn.jsdelivr.net", "fonts.googleapis.com", "use.fontawesome.com"],
+    },
+  },
 }));
 
 app.set('view engine', 'ejs');
