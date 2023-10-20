@@ -10,7 +10,7 @@
 * [Environment Variables](#environment-variables)
 * [Features](#features)
 * [Used Libraries with Examples](#used-libraries-with-examples)
-* [React Technology Implementation with Examples](#react-technology-implementation-with-examples)
+* [Node Technology Implementation with Examples](#node-technology-implementation-with-examples)
 * [Licenses](#licenses)
 
 
@@ -139,10 +139,10 @@ After registering and logging in on the site, the user gains access to their per
 - [app/db/controllers/trip-controller.js](https://github.com/WojciechK92/travel-with-us/blob/d094f6f4e6dbe800cf7557568b587c0229b96895/app/controllers/trip-controller.js)
 
 6. Cookie Parser 
-- [app/config.js](https://github.com/WojciechK92/travel-with-us/blob/d094f6f4e6dbe800cf7557568b587c0229b96895/app/config.js)
+- [app/app.js](https://github.com/WojciechK92/travel-with-us/blob/d094f6f4e6dbe800cf7557568b587c0229b96895/app/app.js)
 
 7. Express session 
-- [app/config.js](https://github.com/WojciechK92/travel-with-us/blob/d094f6f4e6dbe800cf7557568b587c0229b96895/app/config.js)
+- [app/app.js](https://github.com/WojciechK92/travel-with-us/blob/d094f6f4e6dbe800cf7557568b587c0229b96895/app/app.js)
 - [app/controllers/user-controller.js](https://github.com/WojciechK92/travel-with-us/blob/d094f6f4e6dbe800cf7557568b587c0229b96895/app/controllers/user-controller.js)
 
 8. Bcrypt 
