@@ -92,6 +92,7 @@ class UserController {
       req.session.user = user;
       res.redirect('/profile/edit');
     } catch(e) {
+      console.log(e);
       res.render('pages/auth/edit', {
         layout: 'layouts/auth',
         title: 'Edit profile',

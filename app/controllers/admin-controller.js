@@ -152,9 +152,11 @@ class AdminController {
     trip.price = req.body.price;
     trip.admin = req.session.admin._id;
 
-
-    if (req.file) {
+    if (req.file && trip.image) {
       fs.unlinkSync(`public/uploads/${trip.image}`);
+      trip.image = req.file.filename;
+    };
+    if (req.file && !trip.image) {
       trip.image = req.file.filename;
     }; 
     
@@ -177,7 +179,10 @@ class AdminController {
 
     try {
       const trip = await Trip.findById(id);
-      fs.unlinkSync(`public/uploads/${trip.image}`);
+
+      if (trip.image) {
+        fs.unlinkSync(`public/uploads/${trip.image}`);
+      };
 
       await Trip.deleteOne({ _id: id });
       res.redirect('/admin');

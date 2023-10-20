@@ -48,25 +48,40 @@
         <span class="d-none d-lg-inline fs-6 badge bg-dark"><%= trip.rating || 0 %></span>
         <% if (user) { %>
           <% if (user.trips.includes(trip._id.toString())) { %>
-            <a class="booking btn btn-danger w-100" data-option="remove" data-trip-id="<%- trip._id %>" href="#">
-              Cancel reservation
-            </a>
+            <div class="align-self-center">
+              <p class="text-center fs-6">Price per person: <span class="fw-bold"><%= trip.price %>€</span></p>
+              <a class="booking btn btn-danger w-100" data-option="remove" data-trip-id="<%- trip._id %>" href="#">
+                Cancel reservation
+              </a>
+            </div>
           <% } else { %>
             <% if (user.trips.length < 2) { %>
-              <a class="booking btn btn-primary w-100" data-option="add" data-trip-id="<%- trip._id %>" href="#">
-                Book trip 
-              </a>
+              <div class="align-self-center">
+                <p class="text-center fs-6">Price per person: <span class="fw-bold"><%= trip.price %>€</span></p>
+                <a class="booking btn btn-primary w-100" data-option="add" data-trip-id="<%- trip._id %>" href="#">
+                  Book trip 
+                </a>
+              </div>
             <% } else { %>
-              <h1 class="align-self-center h5">
-                <p class="badge bg-secondary text-wrap p-3 m-0">You can only book 2 trips!</p>
-              </h1>
+              <div class="align-self-center">
+                <p class="text-center fs-6 m-0">Price per person: <span class="fw-bold"><%= trip.price %>€</span></p>
+                <h5 class="m-0 py-2">
+                  <span class="badge bg-secondary text-wrap">
+                    You can only book 2 trips!
+                  </span>
+                </h5>
+              </div>
             <% } %>
           <% } %> 
         <% } else { %>
-          <h1 class="align-self-center h5 m-0 mb-lg-3">
-            <p class="text-center fs-6">Price per person: <span class="fw-bold"><%= trip.price %>€</span></p>
-            <p class="badge bg-secondary text-wrap m-0 py-2">Register or log in to book your trip!</p>
-          </h1>
+          <div class="align-self-center m-0 mb-lg-3">
+            <p class="text-center fs-6 m-0">Price per person: <span class="fw-bold"><%= trip.price %>€</span></p>
+            <h5 class="m-0 py-2">
+              <span class="badge bg-secondary text-wrap">
+                Register or log in to book your trip!
+              </span>
+            </h5>
+          </div>
         <% } %>
       </div>
     </div> 

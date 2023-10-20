@@ -1,68 +1,66 @@
 <div class="container my-4">
   <div class="card">
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data" novalidate>
-        <h2 class="mb-4"><%= label %></h2>
-        <%- include('../../partials/inputText', { label: 'Country', name: 'country', required: true }) %>
-        <%- include('../../partials/inputText', { label: 'Region', name: 'region', required: true }) %>
-        <%- include('../../partials/inputText', { label: 'City', name: 'city', required: true }) %>
-        <%- include('../../partials/inputText', { label: 'Hotel', name: 'hotelName', required: true }) %>
-        <%- include('../../partials/inputSelect', { label: 'Hotel standard', name: 'hotelStandard',
-          options: [
-            { label: '--- choose one option ---', value: ''},  
-            { label: '5*', value: '5'},  
-            { label: '4*', value: '4'},  
-            { label: '3*', value: '3'},  
-            { label: '2*', value: '2'},  
-          ],
-        }) %>
-        <div class="d-flex gap-4">
-          <%- include('../../partials/inputDate', {label: 'Start trip', name: 'start', required: true }) %>
-          <%- include('../../partials/inputDate', {label: 'End trip', name: 'end', required: true}) %>
-        </div>
-        <%- include('../../partials/inputText', { label: 'From', name: 'from', required: true }) %>
-        <%- include('../../partials/inputSelect', { label: 'Food', name: 'food',
-          options: [
-            { label: '--- choose one option ---', value: ''},  
-            { label: 'All inclusive', value: 'All-inclusive'},  
-            { label: 'Breakfast and dinner', value: 'Breakfast-and-diner'},  
-            { label: 'Breakfast', value: 'Breakfast'},  
-            { label: 'Three meals', value: 'Three-meals'},  
-          ],
-        }) %>
-        <%- include('../../partials/inputRadio', { label: 'Mean of transport', name: 'transport',
-          options: [
-            { label: 'Plane', value: 'Plane'},  
-            { label: 'Bus', value: 'Bus'},  
-            { label: 'Own', value: 'Own'},  
-          ],
-        }) %>
-        <%- include('../../partials/inputSelect', { label: 'Popular', name: 'popular',
-          options: [
-            { label: '--- choose one option ---', value: ''},  
-            { label: 'Last minute', value: 'Last-minute'},  
-            { label: 'Winter 2023', value: 'Winter2023'},  
-            { label: 'Summer 2024', value: 'Summer2024'},  
-            { label: 'Poland 2024', value: 'Poland2024'},  
-          ],
-        }) %>
-        <%- include('../../partials/inputNumber', { label: 'Free places', name: 'places', required: true, min: 0}) %>
-        <%- include('../../partials/inputNumber', { label: 'Price per person (€)', name: 'price', required: true, min: 0}) %>
-        <% if (form.image) { %>
-          <div class="row mb-3">
-            <div class="col-12 col-md-6">
-              <%- include('../../partials/inputFile', { label: 'Image', name: 'image'}) %>
-            </div>
-            <div class="col-12 col-md-6">
-              <img src="/uploads/<%= form.image %>" alt="trip" class="img-thumbnail">
-            </div>
+      <h2 class="mb-4"><%= label %></h2>
+      <%- include('../../partials/inputText', { label: 'Country', name: 'country', required: true }) %>
+      <%- include('../../partials/inputText', { label: 'Region', name: 'region', required: true }) %>
+      <%- include('../../partials/inputText', { label: 'City', name: 'city', required: true }) %>
+      <%- include('../../partials/inputText', { label: 'Hotel', name: 'hotelName', required: true }) %>
+      <%- include('../../partials/inputSelect', { label: 'Hotel standard', name: 'hotelStandard',
+        options: [
+          { label: '--- choose one option ---', value: ''},  
+          { label: '5*', value: '5'},  
+          { label: '4*', value: '4'},  
+          { label: '3*', value: '3'},  
+          { label: '2*', value: '2'},  
+        ],
+      }) %>
+      <div class="d-flex gap-4">
+        <%- include('../../partials/inputDate', {label: 'Start trip', name: 'start', required: true }) %>
+        <%- include('../../partials/inputDate', {label: 'End trip', name: 'end', required: true}) %>
+      </div>
+      <%- include('../../partials/inputText', { label: 'From', name: 'from', required: true }) %>
+      <%- include('../../partials/inputSelect', { label: 'Food', name: 'food',
+        options: [
+          { label: '--- choose one option ---', value: ''},  
+          { label: 'All inclusive', value: 'All-inclusive'},  
+          { label: 'Breakfast and dinner', value: 'Breakfast-and-diner'},  
+          { label: 'Breakfast', value: 'Breakfast'},  
+          { label: 'Three meals', value: 'Three-meals'},  
+        ],
+      }) %>
+      <%- include('../../partials/inputRadio', { label: 'Mean of transport', name: 'transport',
+        options: [
+          { label: 'Plane', value: 'Plane'},  
+          { label: 'Bus', value: 'Bus'},  
+          { label: 'Own', value: 'Own'},  
+        ],
+      }) %>
+      <%- include('../../partials/inputSelect', { label: 'Popular', name: 'popular',
+        options: [
+          { label: '--- choose one option ---', value: ''},  
+          { label: 'Last minute', value: 'Last-minute'},  
+          { label: 'Winter 2023', value: 'Winter2023'},  
+          { label: 'Summer 2024', value: 'Summer2024'},  
+          { label: 'Poland 2024', value: 'Poland2024'},  
+        ],
+      }) %>
+      <%- include('../../partials/inputNumber', { label: 'Free places', name: 'places', required: true, min: 0}) %>
+      <%- include('../../partials/inputNumber', { label: 'Price per person (€)', name: 'price', required: true, min: 0}) %>
+      <% if (form.image) { %>
+        <div class="row mb-3">
+          <div class="col-12 col-md-6">
+            <%- include('../../partials/inputFile', { label: 'Image', name: 'image'}) %>
           </div>
-        <% } else { %>
-          <%- include('../../partials/inputFile', { label: 'Image', name: 'image'}) %>
-        <% } %>
-        <button class="btn btn-primary px-3 py-2 me-2"><%= buttonText %></button>
-        <a href="/admin" class="btn btn-secondary px-3 py-2">Back</a>
-      </form>
+          <div class="col-12 col-md-6">
+            <img src="/uploads/<%= form.image %>" alt="trip" class="img-thumbnail">
+          </div>
+        </div>
+      <% } else { %>
+        <%- include('../../partials/inputFile', { label: 'Image', name: 'image'}) %>
+      <% } %>
+      <button class="btn btn-primary px-3 py-2 me-2"><%= buttonText %></button>
+      <a href="/admin" class="btn btn-secondary px-3 py-2">Back</a>
     </div>
   </div>
 </div>
